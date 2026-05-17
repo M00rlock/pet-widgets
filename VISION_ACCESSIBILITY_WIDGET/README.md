@@ -1,31 +1,179 @@
-# Vision Accessibility Web Component
+# Vision Accessibility Widget
 
-Простий Web Component для додавання accessibility-панелі на сайт.
+**Vision Accessibility Widget** — це легкий Web Component для додавання на сайт accessibility-панелі для людей із порушенням зору.
 
-Компонент натхненний блоком **“Людям із порушенням зору”** з сайту Львівобленерго.
+Компонент дозволяє користувачу змінювати розмір шрифту, перемикати контрастні режими, використовувати простіший шрифт, збільшувати інтервали між літерами та повертатися до звичайної версії сайту.
+
+Ідея компонента натхненна accessibility-блоком **“Людям із порушенням зору”**, який часто зустрічається на державних, комунальних та інформаційних сайтах.
 
 ---
 
-## Що це
+## Features
 
-Це невеликий віджет доступності, який додає на сайт кнопку:
+- зміна розміру шрифту;
+- висококонтрастний режим;
+- світлий контрастний режим;
+- простий читабельний шрифт;
+- збільшені інтервали між літерами;
+- повернення до звичайної версії сайту;
+- збереження налаштувань у браузері;
+- робота без сторонніх бібліотек;
+- підтримка Shadow DOM;
+- можна використовувати з HTML, Astro, React, Vue, Angular, Next.js та іншими фреймворками.
+
+---
+
+## Demo
+
+Після підключення компонента на сайті зʼявляється кнопка:
 
 **“Людям із порушенням зору”**
 
-Після натискання відкривається панель з налаштуваннями, які допомагають зробити сайт зручнішим для читання.
+Після натискання відкривається панель з налаштуваннями доступності.
 
 ---
 
-## Можливості
+## Installation
 
-- зміна розміру шрифту
-- контрастна тема
-- світла тема
-- простий читабельний шрифт
-- збільшені інтервали між літерами
-- повернення до звичайної версії сайту
-- збереження вибраних налаштувань у браузері
-- робота без React, Vue, Angular або інших залежностей
+Склонуйте репозиторій:
+
+```bash
+git clone git@github.com:M00rlock/pet-widgets.git
+```
+
+Перейдіть у папку проєкту:
+
+```bash
+cd pet-widgets
+```
+
+---
+
+## Як додати віджет на сайт
+
+### 1. Додайте файл компонента у проєкт
+
+Наприклад, покладіть файл у папку:
+
+```txt
+public/vision-accessibility-widget.js
+```
+
+---
+
+### 2. Підключіть скрипт на сторінці
+
+```html
+<script type="module" src="/vision-accessibility-widget.js"></script>
+```
+
+---
+
+### 3. Додайте компонент у HTML
+
+```html
+<vision-accessibility-widget></vision-accessibility-widget>
+```
+
+Зазвичай компонент краще додавати перед закриваючим тегом `body`.
+
+---
+
+## Приклад повного підключення
+
+```html
+<body>
+  <main>
+    <!-- Site content -->
+  </main>
+
+  <vision-accessibility-widget></vision-accessibility-widget>
+
+  <script type="module" src="/vision-accessibility-widget.js"></script>
+</body>
+```
+
+---
+
+## Підключення в Astro
+
+Покладіть файл компонента в папку:
+
+```txt
+public/vision-accessibility-widget.js
+```
+
+Потім додайте його у головний layout, наприклад `BaseLayout.astro`:
+
+```astro
+<html lang="uk">
+  <head>
+    <script type="module" src="/vision-accessibility-widget.js"></script>
+  </head>
+
+  <body>
+    <slot />
+
+    <vision-accessibility-widget />
+  </body>
+</html>
+```
+
+---
+
+## Підключення в React
+
+Файл компонента можна покласти в `public`:
+
+```txt
+public/vision-accessibility-widget.js
+```
+
+Підключіть скрипт у головному HTML-файлі або layout:
+
+```html
+<script type="module" src="/vision-accessibility-widget.js"></script>
+```
+
+Після цього використовуйте компонент як звичайний HTML-елемент:
+
+```jsx
+<vision-accessibility-widget />
+```
+
+---
+
+## Підключення в Next.js
+
+Покладіть файл у папку:
+
+```txt
+public/vision-accessibility-widget.js
+```
+
+Підключіть його у `layout.tsx` або `layout.jsx`:
+
+```jsx
+import Script from 'next/script';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="uk">
+      <body>
+        {children}
+
+        <vision-accessibility-widget />
+
+        <Script
+          src="/vision-accessibility-widget.js"
+          type="module"
+          strategy="afterInteractive"
+        />
+      </body>
+    </html>
+  );
+}
+```
 
 ---
 
@@ -94,9 +242,36 @@
 
 ---
 
+## Accessibility
+
+Компонент не замінює повноцінну доступність сайту, але допомагає покращити базову зручність для частини користувачів.
+
+Його варто використовувати як додатковий інструмент разом із:
+
+- правильною семантикою HTML;
+- достатнім контрастом;
+- зрозумілою навігацією;
+- підтримкою клавіатурної навігації;
+- коректними `aria`-атрибутами;
+- адаптивною версткою;
+- зрозумілими текстами;
+- доступними формами.
+
+---
+
+## Важливо
+
+Не варто покладатися лише на цей компонент як на єдине accessibility-рішення.
+
+Основний сайт усе одно має бути зручним, читабельним і доступним без увімкнення спеціального режиму.
+
+Компонент краще використовувати як додатковий шар поверх уже добре зробленого інтерфейсу.
+
+---
+
 ## Де використовувати
 
-Такий компонент добре підходить для:
+Компонент добре підходить для:
 
 - корпоративного сайту;
 - портфоліо;
@@ -104,74 +279,158 @@
 - державного або комунального сайту;
 - лендингу;
 - блогу;
-- інформаційного порталу.
+- інформаційного порталу;
+- документації;
+- навчального сайту.
 
 ---
 
-## Переваги
+## Browser Support
 
-- не потребує сторонніх бібліотек;
-- легко підключається до будь-якого сайту;
-- працює як із простим HTML, так і з Astro, React, Vue чи Angular;
-- не ламає існуючу структуру сайту;
-- ізольована внутрішня розмітка завдяки Shadow DOM;
-- глобальні зміни застосовуються тільки через CSS-класи;
-- налаштування зберігаються між сесіями.
+Компонент використовує стандартні можливості браузера:
 
----
+- Custom Elements;
+- Shadow DOM;
+- CSS-класи;
+- localStorage.
 
-## UX-логіка
+Підтримується сучасними браузерами:
 
-Кнопка віджета завжди доступна на сторінці.
-
-Коли користувач відкриває панель, він одразу бачить основні налаштування:
-
-- розмір тексту;
-- колірну схему;
-- додаткові параметри читабельності;
-- кнопку повернення до звичайної версії.
-
-Панель можна закрити, не скидаючи вибрані налаштування.
+- Chrome;
+- Edge;
+- Firefox;
+- Safari;
+- Opera.
 
 ---
 
-## Accessibility-підхід
+## Project Structure
 
-Компонент не замінює повноцінну доступність сайту, але допомагає покращити базову зручність для частини користувачів.
+Приклад простої структури проєкту:
 
-Він може бути корисним як додатковий інструмент разом із:
-
-- правильною семантикою HTML;
-- достатнім контрастом;
-- зрозумілою навігацією;
-- підтримкою клавіатурної навігації;
-- коректними `aria`-атрибутами;
-- адаптивною версткою.
-
----
-
-## Рекомендації
-
-Не варто покладатися лише на цей компонент як на єдине accessibility-рішення.
-
-Краще використовувати його як додатковий шар поверх уже добре зробленого сайту.
-
-Основний сайт усе одно має бути зручним, читабельним і доступним без увімкнення спеціального режиму.
+```txt
+pet-widgets/
+├── public/
+│   └── vision-accessibility-widget.js
+├── README.md
+└── LICENSE
+```
 
 ---
 
-## Назва компонента
+## Customization
 
-Рекомендована назва:
+Компонент можна адаптувати під свій сайт:
 
-**Vision Accessibility Widget**
-
-Або українською:
-
-**Віджет доступності для людей із порушенням зору**
+- змінити позицію кнопки;
+- змінити текст кнопки;
+- змінити кольори;
+- змінити розміри шрифту;
+- додати нові режими;
+- змінити стилі панелі;
+- інтегрувати в існуючу дизайн-систему.
 
 ---
 
-## Короткий опис для README
+## Local Development
 
-**Vision Accessibility Widget** — це легкий Web Component, який додає на сайт панель доступності для людей із порушенням зору. Він дозволяє змінювати розмір шрифту, перемикати контрастні режими, використовувати простіший шрифт, збільшувати інтервали між літерами та повертатися до звичайної версії сайту.
+Для базового використання не потрібна збірка або додаткові залежності.
+
+Достатньо підключити JavaScript-файл на сторінку.
+
+Якщо ви хочете протестувати локально, можна відкрити HTML-файл у браузері або використати простий локальний сервер.
+
+Наприклад:
+
+```bash
+npx serve .
+```
+
+або:
+
+```bash
+python3 -m http.server
+```
+
+---
+
+## GitHub
+
+Репозиторій:
+
+```txt
+git@github.com:M00rlock/pet-widgets.git
+```
+
+---
+
+## Roadmap
+
+Можливі покращення в майбутньому:
+
+- додати українську та англійську локалізацію;
+- додати режим приховування зображень;
+- додати режим підкреслення всіх посилань;
+- додати режим збільшеного курсора;
+- додати keyboard shortcuts;
+- додати npm-пакет;
+- додати демо-сторінку;
+- додати тести;
+- додати TypeScript-версію.
+
+---
+
+## Contributing
+
+Pull requests are welcome.
+
+Якщо хочете покращити компонент:
+
+1. зробіть fork репозиторію;
+2. створіть окрему гілку;
+3. внесіть зміни;
+4. відкрийте Pull Request.
+
+---
+
+## Author
+
+**Oleksandr Vasyliev**
+
+GitHub: [M00rlock](https://github.com/M00rlock)
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## MIT License
+
+```txt
+MIT License
+
+Copyright (c) 2026 Oleksandr Vasyliev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files, to deal in the Software
+without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
